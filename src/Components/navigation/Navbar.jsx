@@ -17,8 +17,8 @@ export default function Navbar() {
   }
 
   return (
-    <div className='bg-c2'>
-      <div className="navbar max-w-6xl mx-auto text-c4">
+    <div className='bg-c1'>
+      <div className="navbar max-w-6xl mx-auto text-c2">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden" onClick={() => setIsOpen(!isOpen)}>
@@ -36,13 +36,13 @@ export default function Navbar() {
               <li><Link href="#"><span>New Arrivals</span></Link></li>
             </ul>
           </div>
-          <Link href="#"><span className="btn btn-ghost text-xl">E-Com</span></Link>
+          <Link href="\"><span className="btn btn-ghost text-xl">E-Com</span></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li><Link href="#"><span>Shop Now</span></Link></li>
             <li>
-              <details>
+              <details className='z-10'>
                 <summary><Link href="#"><span>Categories</span></Link></summary>
                 <ul className="p-2">
                   <li><Link href="#"><span>Men</span></Link></li>
@@ -55,7 +55,7 @@ export default function Navbar() {
         </div>
         <div className="navbar-end space-x-4">
           <Link href="#"><span className="btn bg-c4 text-c1">Cart</span></Link>
-          <Link href="#"><span className="btn bg-c4 text-c1">Login</span></Link>
+          <Link href="\Login"><span className="btn bg-c4 text-c1">Login</span></Link>
         </div>
       </div>
     </div>

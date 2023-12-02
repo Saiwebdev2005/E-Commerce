@@ -14,7 +14,7 @@ export default function LoginPage() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-c2">
-      <div className="w-full max-w-md">
+      <div className=" md:w-full md:max-w-6xl">
         <form
           onSubmit={handleLogin}
           className="bg-c1 shadow-lg rounded px-12 pt-6 pb-8 mb-4"
@@ -56,7 +56,7 @@ export default function LoginPage() {
           </div>
           <div className="flex items-center justify-center">
             <button
-              className="w-full px-4 py-2 rounded text-c2 inline-block shadow-lg bg-c4 hover:bg-c3 focus:bg-c3 duration-300"
+              className="w-full button"
               type="submit"
             >
               Sign In

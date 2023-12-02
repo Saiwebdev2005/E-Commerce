@@ -15,7 +15,7 @@ function Carousel() {
   React.useEffect(() => {
     const interval = setInterval(() => {
       setActiveIndex((activeIndex + 1) % images.length);
-    }, 2000);
+    }, 3000);
     return () => clearInterval(interval);
   }, [activeIndex]);
 
@@ -24,15 +24,25 @@ function Carousel() {
       <div className="relative h-32 sm:h-48 md:h-56 lg:h-64 xl:h-96 overflow-hidden">
         {images.map((image, index) => (
           <div key={index} className={`duration-700 ease-in-out ${index === activeIndex ? 'block' : 'hidden'}`}>
-            <img src={image} className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
+            <img src={image} className="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
           </div>
         ))}
       </div>
-      <div className="absolute z-30 flex -translate-x-1/2 bottom-5 left-1/2 space-x-3 rtl:space-x-reverse">
-        {images.map((_, index) => (
-          <button key={index} type="button" className="w-3 h-3 rounded-full" aria-current={index === activeIndex} aria-label={`Slide ${index + 1}`} onClick={() => setActiveIndex(index)}></button>
-        ))}
-      </div>
+      <div className="bg-c3 -mb-4 md:mb-0 md:p-2 rounded-xl absolute z-10 flex -translate-x-1/2 bottom-5 left-1/2 space-x-1 md:space-x-3 rtl:space-x-reverse">
+  {images.map((_, index) => (
+    <button 
+      key={index} 
+      type="button" 
+      className="flex justify-center items-center w-1 md:w-4 h-1 md:h-full rounded-full button md:px-4 px-2 text-xs" 
+      aria-current={index === activeIndex} 
+      aria-label={`Slide ${index + 1}`} 
+      onClick={() => setActiveIndex(index)}
+    >
+     <span className='md:font-bold'>{index + 1}</span> 
+    </button>
+  ))}
+</div>
+
     </div>
   );
 }

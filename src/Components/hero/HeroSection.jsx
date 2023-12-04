@@ -20,8 +20,8 @@ function Carousel() {
   }, [activeIndex]);
 
   return (
-    <div id="default-carousel" className="relative w-full mt-6">
-      <div className="relative h-32 sm:h-48 md:h-56 lg:h-64 xl:h-96 overflow-hidden">
+    <div id="default-carousel" className="relative w-full h-[200px] md:h-[675px]">
+      <div className="relative h-full overflow-hidden">
         {images.map((image, index) => (
           <div key={index} className={`duration-700 ease-in-out ${index === activeIndex ? 'block' : 'hidden'}`}>
             <img src={image} className="absolute block w-full h-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2" alt="..." />
@@ -44,6 +44,7 @@ function Carousel() {
 </div>
 
     </div>
+
   );
 }
 

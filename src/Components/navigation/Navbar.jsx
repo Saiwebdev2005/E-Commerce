@@ -29,11 +29,11 @@ export default function Navbar() {
               <li>
                 <Link href="#"><span>Categories</span></Link>
                 <ul className="p-2">
-                  <li><Link href="#"><span>Men</span></Link></li>
-                  <li><Link href="#"><span>Women</span></Link></li>
+                  <li><Link href="\Categories\Men"><span>Men</span></Link></li>
+                  <li><Link href="\Categories\Women"><span>Women</span></Link></li>
                 </ul>
               </li>
-              <li><Link href="#"><span>New Arrivals</span></Link></li>
+              <li><Link href="\NewArrival"><span>New Arrivals</span></Link></li>
             </ul>
           </div>
           <Link href="\"><span className="btn btn-ghost text-2xl md:text-4xl font-bold">E-Com</span></Link>
@@ -45,12 +45,12 @@ export default function Navbar() {
               <details className='z-10'>
                 <summary><Link href="#"><span>Categories</span></Link></summary>
                 <ul className="p-2">
-                  <li><Link href="#"><span>Men</span></Link></li>
-                  <li><Link href="#"><span>Women</span></Link></li>
+                  <li><Link href="\Categories\Men"><span>Men</span></Link></li>
+                  <li><Link href="\Categories\Women"><span>Women</span></Link></li>
                 </ul>
               </details>
             </li>
-            <li><Link href="#"><span>New Arrivals</span></Link></li>
+            <li><Link href="\NewArrival"><span>New Arrivals</span></Link></li>
           </ul>
         </div>
         <div className="navbar-end space-x-4">

@@ -1,18 +1,18 @@
- const cardData = [
+const cardData = [
   {
-    image: "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-    title: "Shoes!",
-    description: "If a dog chews shoes whose shoes does he choose?"
+    image: "https://www.pexels.com/photo/white-and-black-shirt-3965544/",
+    title: "Shirt!",
+    description: "A comfortable cotton shirt."
   },
   {
-    image: "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-    title: "Hats!",
-    description: "If a cat wears hats whose hats does it wear?"
+    image: "https://www.pexels.com/photo/blue-denim-jeans-1055694/",
+    title: "Pants!",
+    description: "A pair of stylish jeans."
   },
   {
-    image: "https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg",
-    title: "Socks!",
-    description: "If a fox wears socks whose socks does it wear?"
+    image: "https://www.pexels.com/photo/person-in-black-leather-jacket-and-blue-denim-jeans-3965699/",
+    title: "Jacket!",
+    description: "A warm and cozy jacket."
   }
 ]
 export default cardData;

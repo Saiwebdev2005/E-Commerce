@@ -54,7 +54,7 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="navbar-end space-x-4">
-          <Link href="#"><span className="button">Cart</span></Link>
+          <Link href="\Cart"><span className="button">Cart</span></Link>
           <Link href="\Login"><span className="button">Login</span></Link>
         </div>
       </div>

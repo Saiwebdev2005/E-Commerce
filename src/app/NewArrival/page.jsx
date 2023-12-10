@@ -1,9 +1,11 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import cardData from '../../Components/Data/cardData';
 import Card from '@/Components/UI/Card';
+import { CartContext } from '@/context';
 
 function page() {
+  const { setCart } = useContext(CartContext);
   const [start, setStart] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(8);
 
@@ -31,6 +33,10 @@ function page() {
     setStart(prevStart => Math.max(prevStart - itemsPerPage, 0));
   };
 
+  const addToCart = (product) => {
+    setCart(prevCart => [...prevCart, product]);
+  };
+
   return (
     <div className='max-w-6xl mx-auto'>
       <div className='grid grid-cols-2 gap-1 md:gap-4 md:grid-cols-3 justify-center items-center mt-16 mb-4'>
@@ -42,6 +48,7 @@ function page() {
             description={data.description} 
             gender={data.gender}
             className="w-full h-48 object-cover"
+            onButtonClick={() => addToCart(data)}
           />
         ))}
       </div>

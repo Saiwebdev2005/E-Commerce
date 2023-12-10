@@ -2,7 +2,7 @@
 import React, { useContext, useState } from 'react';
 import Card from '../UI/Card';
 import { CartContext } from '@/context';
-import cardData from './HomeCardData';
+import cardData from '../Data/cardData'
 import Link from 'next/link';
 
 function HomeProduct() {
@@ -18,15 +18,18 @@ function HomeProduct() {
         <h1 className='text-3xl md:text-6xl font-bold text-c2'>Our New Arrivals</h1>
       </div>
       <div className='grid grid-cols-2 md:grid-cols-3 gap-1 md:gap-12'>
-        {cardData.map((data, index) => (
-          <Card 
-            key={index}
-            image={data.image} 
-            title={data.title} 
-            description={data.description} 
-            onButtonClick={() => addToCart(data)}
-          />
-        ))}
+      {cardData.slice(0, 3).map((data, index) => (
+    <Card 
+    key={index}
+    image={data.image} 
+    title={data.title} 
+    description={data.description} 
+    gender={data.gender}
+    price={data.price} // pass the price here
+    className="w-full h-48 object-cover"
+    onButtonClick={() => addToCart(data)}
+/>
+  ))}
       </div>
       <div>
         <button className='button mb-6'><Link href='\NewArrival'>View More</Link></button>

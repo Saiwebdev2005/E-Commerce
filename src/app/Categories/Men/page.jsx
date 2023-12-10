@@ -1,9 +1,10 @@
 "use client";
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect,useContext } from 'react';
 import cardData from '../../../Components/Data/cardData';
 import Card from '@/Components/UI/Card';
-
+import { CartContext } from '@/context';
 function page() {
+  const { setCart } = useContext(CartContext);
   const [start, setStart] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(8);
 
@@ -31,6 +32,9 @@ function page() {
     setStart(prevStart => Math.max(prevStart - itemsPerPage, 0));
   };
 
+  const addToCart = (product) => {
+    setCart(prevCart => [...prevCart, product]);
+  };
   // Filter the cardData to only include items where gender is "Male"
   const maleCardData = cardData.filter(data => data.gender === "Male");
 
@@ -44,7 +48,9 @@ function page() {
             title={data.title} 
             description={data.description} 
             gender={data.gender}
+            price={data.price} 
             className="w-full h-48 object-cover"
+            onButtonClick={() => addToCart(data)}
           />
         ))}
       </div>

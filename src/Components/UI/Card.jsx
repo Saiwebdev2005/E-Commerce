@@ -1,11 +1,12 @@
 import { formatCurrency } from '@/utils/formatCurrency';
 
-function Card({id, image, title, description, gender, onButtonClick}) {
+function Card({id, image, title, description, gender, onButtonClick,price}) {
  
   const handleClick = () => {
-    const cardData = {id, image, title, description, gender};
+    const cardData = {id, image, title, description, gender,price};
     onButtonClick(cardData);
   }
+  const randomPrice = Math.floor(Math.random() * (999 - 399 + 1)) + 399;
 
   return (
     <div key={id} className="max-w-xs sm:max-w-sm md:max-w-sm rounded overflow-hidden shadow-lg m-4 bg-white transform transition duration-500 ease-in-out hover:scale-105 hover:shadow-2xl">
@@ -18,8 +19,9 @@ function Card({id, image, title, description, gender, onButtonClick}) {
         </p>
         <p>
           {/* price should be passes inside instead of 100 */}
-          {formatCurrency(100)}
+          {formatCurrency(randomPrice)}
         </p>
+       
       </div>
       <div className="px-4 sm:px-6 pt-2 sm:pt-4 pb-2 flex justify-end">
         <button onClick={handleClick} className="text-xs md:text-sm button transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">+ Add To Cart</button>

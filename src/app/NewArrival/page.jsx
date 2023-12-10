@@ -47,6 +47,7 @@ function page() {
             title={data.title} 
             description={data.description} 
             gender={data.gender}
+            price={data.price} 
             className="w-full h-48 object-cover"
             onButtonClick={() => addToCart(data)}
           />

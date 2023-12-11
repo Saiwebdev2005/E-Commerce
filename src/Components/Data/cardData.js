@@ -33,7 +33,7 @@ let data = [
   ];
   
 
-let clothNames = ["T-Shirt", "Jeans", "Jacket", "Sweater", "Shirt", "Shorts", "Skirt", "Dress", "Blouse", "Hoodie"];
+let clothNames = ["T-Shirt", "Jeans", "Jacket", "Sweater", "Shirt", "Shorts", "Skirt", "Hoodie"];
 
 data.forEach(item => {
     item.price = {value: Math.floor(Math.random() * (999 - 399 + 1)) + 399};

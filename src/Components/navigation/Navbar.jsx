@@ -36,7 +36,7 @@ export default function Navbar() {
               <li><Link href="\NewArrival"><span>New Arrivals</span></Link></li>
             </ul>
           </div>
-          <Link href="\"><span className="btn btn-ghost text-2xl md:text-4xl font-bold">E-Com</span></Link>
+          <Link href="\"><span className="btn btn-ghost text-2xl md:text-4xl font-bold">Anime-clothes</span></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
@@ -54,8 +54,8 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="navbar-end space-x-4">
-          <Link href="\Cart"><span className="button">Cart</span></Link>
-          <Link href="\Login"><span className="button">Login</span></Link>
+          <Link href="\Cart"><span className="button font-semibold">Cart</span></Link>
+          <Link href="\Login"><span className="button font-semibold">Login</span></Link>
         </div>
       </div>
     </div>

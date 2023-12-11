@@ -6,6 +6,6 @@
 {
   .button
   {
-    @apply px-4 py-2 rounded text-c2 inline-block shadow-lg bg-c4 hover:bg-c3 hover:text-c1 focus:bg-c3 duration-300
+    @apply px-4 py-2 rounded text-c2 inline-block shadow-lg bg-c4 hover:bg-c3 hover:text-c1 focus:bg-c3 duration-500 hover:border-2 hover:border-white
   }
 }

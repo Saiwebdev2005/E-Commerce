@@ -1,8 +1,9 @@
-"use client"
-import React, { useState } from 'react';
+// RootLayout.js
+
+import React from 'react';
 import Footer from '@/Components/Footer/Footer'
 import Navbar from '@/Components/navigation/Navbar'
-import { CartContext, CartWrapper } from '@/context/index'
+import { CartProvider } from '@/context/index' // Import CartProvider
 import { Inter } from 'next/font/google'
 import './globals.css'
 
@@ -14,15 +15,13 @@ const metadata = {
 }
 
 export default function RootLayout({ children }) {
-  const [cart, setCart] = useState([]);
-
   return (
     <html lang="en">
       <body className={inter.className}>
         <Navbar/>
-        <CartContext.Provider value={{cart, setCart}}>
+        <CartProvider> {/* Use CartProvider to wrap your components */}
           {children}
-        </CartContext.Provider>
+        </CartProvider>
         <Footer/>
       </body>
     </html>

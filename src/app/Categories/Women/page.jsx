@@ -4,7 +4,7 @@ import cardData from '../../../Components/Data/cardData';
 import Card from '@/Components/UI/Card';
 import { CartContext } from '@/context';
 function page() {
-  const { setCart } = useContext(CartContext);
+  const { addToCart } = useContext(CartContext); 
   const [start, setStart] = useState(0);
   const [itemsPerPage, setItemsPerPage] = useState(8);
 
@@ -31,9 +31,7 @@ function page() {
   const handlePrevious = () => {
     setStart(prevStart => Math.max(prevStart - itemsPerPage, 0));
   };
-  const addToCart = (product) => {
-    setCart(prevCart => [...prevCart, product]);
-  };
+  
   // Filter the cardData to only include items where gender is "Male"
   const womenCardData = cardData.filter(data => data.gender === "Women");
 

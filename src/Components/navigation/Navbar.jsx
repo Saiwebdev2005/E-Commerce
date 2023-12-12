@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-
+import { AiOutlineShoppingCart } from "react-icons/ai";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -54,7 +54,7 @@ export default function Navbar() {
           </ul>
         </div>
         <div className="navbar-end space-x-4">
-          <Link href="\Cart"><span className="button font-semibold">Cart</span></Link>
+          <Link href="\Cart"><span className='button text-2xl mt-1.5'><AiOutlineShoppingCart/></span></Link>
           <Link href="\Login"><span className="button font-semibold">Login</span></Link>
         </div>
       </div>

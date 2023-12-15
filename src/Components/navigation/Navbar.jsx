@@ -36,7 +36,10 @@ export default function Navbar() {
               <li><Link href="\NewArrival"><span>New Arrivals</span></Link></li>
             </ul>
           </div>
-          <Link href="\"><span className="btn btn-ghost text-2xl md:text-4xl font-bold">Anime-clothes</span></Link>
+          <Link href="\"><span className="btn btn-ghost text-xl md:text-4xl font-bold">
+           <span className='hidden md:block'> Anime-clothes</span>
+           <span className='block md:hidden'>AnimeX</span>
+            </span></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">

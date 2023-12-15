@@ -39,9 +39,9 @@ function Page() {
     <div className='w-full bg-c2 py-12'>
       <div className='max-w-6xl mx-auto'>
         <div className='flex justify-center items-center'>
-          <h1 className='text-6xl font-bold text-c4 p-12'>New Arrivals</h1>
+          <h1 className='text-4xl md:text-6xl font-bold text-c4  md:p-2'>New Arrivals</h1>
         </div>
-        <div className=' grid grid-cols-2 gap-1 md:gap-4 md:grid-cols-3 justify-center items-center'>
+        <div className=' grid grid-cols-2 gap-1 md:gap-4 md:grid-cols-3 justify-center items-center mt-16 mb-4'>
           {cardData.slice(start, start + itemsPerPage).map((data, index) => (
             <Card 
               key={index}

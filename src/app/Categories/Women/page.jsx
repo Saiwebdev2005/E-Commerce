@@ -36,7 +36,11 @@ function page() {
   const womenCardData = cardData.filter(data => data.gender === "Women");
 
   return (
+    <div className='w-full bg-c2 py-6'>
     <div className='max-w-6xl mx-auto'>
+      <div className='flex justify-center items-center'>
+          <h1 className='text-4xl md:text-6xl font-bold text-c4  md:p-2'>Women</h1>
+        </div>
       <div className='grid grid-cols-2 gap-1 md:gap-4 md:grid-cols-3 justify-center items-center mt-16 mb-4'>
         {womenCardData.slice(start, start + itemsPerPage).map((data, index) => (
           <Card 
@@ -55,6 +59,7 @@ function page() {
         <button className='button' onClick={handlePrevious} disabled={start === 0}>Previous</button>
         {start + itemsPerPage < womenCardData.length && <button className='button' onClick={handleNext}>Next</button>}
       </div>
+    </div>
     </div>
   );
 }

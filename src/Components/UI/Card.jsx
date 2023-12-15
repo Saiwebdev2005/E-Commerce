@@ -20,7 +20,7 @@ function Card({id, image, title, description, gender, onButtonClick,price}) {
        
       </div>
       <div className="px-4 sm:px-6 pt-2 sm:pt-4 pb-2 flex justify-end">
-        <button onClick={handleClick} className="md:w-full text-xs md:text-lg font-sans button transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">+ Add To Cart</button>
+        <button onClick={handleClick} className="w-full text-xs md:text-lg font-sans button transition duration-500 ease-in-out transform hover:-translate-y-1 hover:scale-110">+ Add To Cart</button>
       </div>
     </div>
   )

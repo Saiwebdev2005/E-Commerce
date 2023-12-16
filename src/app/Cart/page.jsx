@@ -11,7 +11,7 @@ function Page() {
   const totalAmount = cart.reduce((total, item) => total + Number(item.price), 0);
 
   return (
-    <div className='bg-c3 flex flex-col justify-center items-center'>
+    <div className='bg-c3 flex flex-col justify-center items-center h-screen md:h-fit'>
       <h1 className="text-2xl md:text-4xl text-c4 font-bold my-4">Cart Items:</h1>
       <div className="flex flex-col md:flex-row items-start md:items-center justify-center md:max-w-6xl md:min-h-screen py-2 px-4 md:px-0">
         {cart.length > 0 ? (
@@ -37,7 +37,7 @@ function Page() {
 
           </>
         ) : (
-          <div className='flex flex-col justify-center items-center space-y-4 -mt-36'>
+          <div className='flex flex-col justify-center items-center space-y-4  md:-mt-36'>
           <h2 className="text-2xl md:text-4xl text-c4 font-bold my-4">Oops the cart is empty!!!</h2>
           <Link href='\'><span className='button font-semibold text-md  md:text-xl'>Let's go shopping</span></Link>
           </div>

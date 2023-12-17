@@ -1,8 +1,10 @@
 "use client";
-import { useState, useEffect } from 'react';
-import Link from 'next/link';
+import { AuthButtons } from "../auth/AuthButtons";
+import { useState, useEffect } from "react";
+import Link from "next/link";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-export default function Navbar() {
+const Navbar = () => {
+
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -17,50 +19,122 @@ export default function Navbar() {
   }
 
   return (
-    <div className='bg-c1'>
+    <div className="bg-c1">
       <div className="navbar max-w-6xl mx-auto text-c2">
         <div className="navbar-start">
           <div className="dropdown">
-            <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden" onClick={() => setIsOpen(!isOpen)}>
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost lg:hidden"
+              onClick={() => setIsOpen(!isOpen)}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M4 6h16M4 12h8m-8 6h16"
+                />
+              </svg>
             </div>
-            <ul tabIndex={0} className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-c1 rounded-box w-52 ${isOpen ? 'block' : 'hidden'} lg:block`}>
-              <li><Link href="\Shop"><span>Shop Now</span></Link></li>
+            <ul
+              tabIndex={0}
+              className={`menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-c1 rounded-box w-52 ${
+                isOpen ? "block" : "hidden"
+              } lg:block`}
+            >
               <li>
-                <Link href="#"><span>Categories</span></Link>
+                <Link href="\Shop">
+                  <span>Shop Now</span>
+                </Link>
+              </li>
+              <li>
+                <Link href="#">
+                  <span>Categories</span>
+                </Link>
                 <ul className="p-2">
-                  <li><Link href="\Categories\Men"><span>Men</span></Link></li>
-                  <li><Link href="\Categories\Women"><span>Women</span></Link></li>
+                  <li>
+                    <Link href="\Categories\Men">
+                      <span>Men</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="\Categories\Women">
+                      <span>Women</span>
+                    </Link>
+                  </li>
                 </ul>
               </li>
-              <li><Link href="\NewArrival"><span>New Arrivals</span></Link></li>
+              <li>
+                <Link href="\NewArrival">
+                  <span>New Arrivals</span>
+                </Link>
+              </li>
             </ul>
           </div>
-          <Link href="\"><span className="btn btn-ghost text-xl md:text-4xl font-bold">
-           <span className='hidden md:block'> Anime-clothes</span>
-           <span className='block md:hidden'>AnimeX</span>
-            </span></Link>
+          <Link href="\">
+            <span className="btn btn-ghost text-xl md:text-4xl font-bold">
+              <span className="hidden md:block"> Anime-clothes</span>
+              <span className="block md:hidden">AnimeX</span>
+            </span>
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li><Link href="\Shop"><span>Shop Now</span></Link></li>
             <li>
-              <details className='z-10'>
-                <summary><Link href="#"><span>Categories</span></Link></summary>
+              <Link href="\Shop">
+                <span>Shop Now</span>
+              </Link>
+            </li>
+            <li>
+              <details className="z-10">
+                <summary>
+                  <Link href="#">
+                    <span>Categories</span>
+                  </Link>
+                </summary>
                 <ul className="p-2 bg-c1">
-                  <li><Link href="\Categories\Men"><span>Men</span></Link></li>
-                  <li><Link href="\Categories\Women"><span>Women</span></Link></li>
+                  <li>
+                    <Link href="\Categories\Men">
+                      <span>Men</span>
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="\Categories\Women">
+                      <span>Women</span>
+                    </Link>
+                  </li>
                 </ul>
               </details>
             </li>
-            <li><Link href="\NewArrival"><span>New Arrivals</span></Link></li>
+            <li>
+              <Link href="\NewArrival">
+                <span>New Arrivals</span>
+              </Link>
+            </li>
           </ul>
         </div>
         <div className="navbar-end space-x-4">
-          <Link href="\Cart"><span className='button text-2xl mt-1.5'><AiOutlineShoppingCart/></span></Link>
-          <Link href="\Login"><span className="button font-semibold">Login</span></Link>
+          <Link href="\Cart">
+            <span className="button text-2xl mt-1.5">
+              <AiOutlineShoppingCart />
+            </span>
+          </Link>
+          <AuthButtons/>
+          <Link href="\SignUp">
+          <span className="button text-2xl mt-1.5">
+            Sign up </span>
+          </Link>
         </div>
       </div>
     </div>
   );
-}
+};
+export default Navbar;

@@ -20,7 +20,7 @@ export const AuthButtons = () => {
         </Link>
       ) : (
         <Link href="/api/auth/signin">
-          <span className="button font-semibold">Login</span>
+          <span className="button font-semibold">Go to SignUp</span>
         </Link>
     )
   );

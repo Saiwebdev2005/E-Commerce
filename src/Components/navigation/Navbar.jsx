@@ -127,10 +127,9 @@ const Navbar = () => {
               <AiOutlineShoppingCart />
             </span>
           </Link>
-          <AuthButtons/>
-          <Link href="\SignUp">
-          <span className="button text-2xl mt-1.5">
-            Sign up </span>
+          <Link href="\User_Access">
+          <span className="button text-xl ">
+            Sign Up </span>
           </Link>
         </div>
       </div>

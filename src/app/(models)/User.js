@@ -1,4 +1,4 @@
-import mongoose,{Schema} from "mongoose"; // Make sure to import mongoose correctly
+import mongoose,{Schema} from "mongoose"; // Make sure to import mongoose correctlyonst URI = 
 
 mongoose.connect(process.env.MONGODB_URI)
 mongoose.Promise = global.Promise;

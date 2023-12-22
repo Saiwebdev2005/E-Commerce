@@ -32,7 +32,7 @@ export const options = {
           placeholder: "your-password",
         },
       },
-      async authorize(credentials) {
+      async authorize (credentials){
         try {
           const foundUser = await User.findOne({ email: credentials.email })
             .lean()
@@ -68,4 +68,7 @@ export const options = {
       return session;
     }
   },
+  // pages:{
+  //   signIn:"/Login"
+  // }
 };

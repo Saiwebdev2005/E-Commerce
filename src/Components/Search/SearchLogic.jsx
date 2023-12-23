@@ -1,15 +1,16 @@
 "use client"
 import { useState, useContext, useEffect } from 'react';
-import data from '../../Components/Data/cardData'
 import { CartContext } from '@/context';
 import SearchDisplay from './SearchDisplay';
+import Data from '../../utils/fetchData';
 
 export default function SearchLogic() {
   const { addToCart } = useContext(CartContext); 
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   const [priceRange, setPriceRange] = useState('all');
-
+  const [data,setData] = useState([])
+  const [loading, setLoading] = useState(true);
   // Function to get three random items from data
   const getRandomItems = () => {
     let randomItems = [];
@@ -19,6 +20,16 @@ export default function SearchLogic() {
     }
     return randomItems;
   }
+  
+  //Fetch The data
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await Data(); // Fetch the data
+      setData(result); // Set the fetched data
+      setLoading(false); // Set loading to false after data is fetched
+    };
+    fetchData();
+  },[]);
 
   // Set initial search results to three random items
   useEffect(() => {
@@ -53,6 +64,14 @@ export default function SearchLogic() {
     setSearchResults(results);
   };
 
+  if (loading) {
+    return (
+      <div className="flex items-center justify-center h-screen bg-c2">
+        <div className="animate-spin mr-3 h-10 w-10 border-t-2 border-b-2 border-c4 rounded-full"></div>
+        <div>Loading...</div>
+      </div>
+    );
+  }
   return (
     <SearchDisplay 
       searchTerm={searchTerm}

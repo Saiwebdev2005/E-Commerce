@@ -1,21 +1,30 @@
+"use client"
 import { notFound } from 'next/navigation'
-import React from 'react'
 
-async function getData() {
-  const res = await fetch('http://localhost:3000/api/clothes',{cache:"no-store"})
-  if(!res.ok) return notFound();
-  return res.json();
-}
+import React, { useState, useEffect } from 'react'
+import Data from '../../utils/fetchData';
 
-const page = async() => {
-  const data = await getData();
-  console.log(data)
+const Page = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const result = await Data();
+      setData(result);
+    };
+
+    fetchData();
+  }, []);
+
   return (
     <div>
       <ul>
-       {data.map(data => {
+       {data.map(item => {
         return(
-          <li>{data.id}</li>
+          <div key={item.id}>
+            <li>{item.id}</li>
+            <img src={item.image} alt={item.title} />
+          </div>
         )
        })}
       </ul>
@@ -23,4 +32,4 @@ const page = async() => {
   )
 }
 
-export default page
+export default Page;

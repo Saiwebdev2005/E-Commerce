@@ -1,7 +1,8 @@
 "use client";
-import { useState } from "react";
-// Corrected import
+import { useState, useEffect } from "react";
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
+import Link from "next/link";
 
 export default function SignInPage() {
   const [formData, setFormData] = useState({
@@ -10,6 +11,8 @@ export default function SignInPage() {
   });
   
   const [error, setError] = useState("");
+  const [showModal, setShowModal] = useState(false);
+  const router = useRouter();
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -27,18 +30,26 @@ export default function SignInPage() {
       const result = await signIn("credentials", {
         email: formData.email,
         password: formData.password,
-        redirect: true,
-        callbackUrl: '/'
+        redirect: false,
       });
-      if (!result) {
-        throw new Error('Login failed');
+      if (result.error) {
+        setError("Invalid Credentials");
+        return;
       }
-      console.log("Logged In using login");
+      setShowModal(true);
     } catch (error) {
       console.error(error);
-      setError('Login failed'); // Set the error message
     }
   };
+
+  useEffect(() => {
+    if (showModal) {
+      setTimeout(() => {
+        setShowModal(false);
+        router.replace("/");
+      }, 2000);
+    }
+  }, [showModal]);
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-c2">
@@ -92,7 +103,22 @@ export default function SignInPage() {
             </button>
           </div>
         </form>
+        {showModal && (
+          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+            <div className="bg-black text-white p-12 rounded shadow-lg text-center">
+              <h2 className="text-2xl mb-4">Login Successful!</h2>
+              <div className="flex flex-col justify-center items-center space-x-1">
+              <p>Redirecting</p><span className="loading loading-dots loading-lg"></span>
+              </div>
+            </div>
+          </div>
+        )}
+        <div className="flex flex-col justify-center items-center">
+          <Link href="/"><span className="text-xl font-sans text-c3">
+          Back to Home
+            </span></Link>
         <p className="text-red-600">{error}</p>
+        </div>
       </div>
     </div>
   );

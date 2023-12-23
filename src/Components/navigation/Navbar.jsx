@@ -3,8 +3,10 @@ import { AuthButtons } from "../auth/AuthButtons";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { AiOutlineShoppingCart } from "react-icons/ai";
+import { signOut } from "next-auth/react";
+import { useSession } from "next-auth/react";
 const Navbar = () => {
-
+ const {data:session} = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
 
@@ -127,10 +129,18 @@ const Navbar = () => {
               <AiOutlineShoppingCart />
             </span>
           </Link>
-          <Link href="\User_Access">
+          {
+            session ? (<button className="button" onClick={() => signOut()}>
+              Sign Out
+            </button>
+            ): (
+<Link href="\User_Access">
           <span className="button text-xl ">
             Sign Up </span>
           </Link>
+            )
+          }
+          
         </div>
       </div>
     </div>

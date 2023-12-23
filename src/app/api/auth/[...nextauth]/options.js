@@ -2,6 +2,7 @@ import User from "@/app/(models)/User";
 import CredentialsProvider from 'next-auth/providers/credentials'; // Make sure to import CredentialsProvider
 import GoogleProvider from 'next-auth/providers/google';
 import bcrypt from 'bcrypt';
+import connect from "@/DB/db";
 export const options = {
   providers: [
     GoogleProvider({
@@ -21,39 +22,38 @@ export const options = {
     CredentialsProvider({
       name: "Email",
       credentials: {
-        email: {
-          label: "email:",
-          type: "text",
-          placeholder: "your-email",
-        },
-        password: {
-          label: "password:",
-          type: "password",
-          placeholder: "your-password",
-        },
+        // email: {
+        //   label: "email:",
+        //   type: "text",
+        //   placeholder: "your-email",
+        // },
+        // password: {
+        //   label: "password:",
+        //   type: "password",
+        //   placeholder: "your-password",
+        // },
       },
-      async authorize (credentials){
+      async authorize(credentials) {
+        const { email, password } = credentials;
+
         try {
-          const foundUser = await User.findOne({ email: credentials.email })
-            .lean()
-            .exec();
-          if (foundUser) {
-            console.log("User Exists");
-            const match = await bcrypt.compare(
-              credentials.password,
-              foundUser.password
-            );
-            if (match) {
-              console.log("Good pass");
-              delete foundUser.password;
-              foundUser["role"] = "Unverified Email";
-              return foundUser;
-            }
+          await connect();
+          const user = await User.findOne({ email });
+
+          if (!user) {
+            return null;
           }
+
+          const passwordsMatch = await bcrypt.compare(password, user.password);
+
+          if (!passwordsMatch) {
+            return null;
+          }
+
+          return user;
         } catch (error) {
-          console.log(error);
+          console.log("Error: ", error);
         }
-        return null;
       },
     }),
   ],
@@ -68,7 +68,7 @@ export const options = {
       return session;
     }
   },
-  // pages:{
-  //   signIn:"/Login"
-  // }
+  pages:{
+    signIn:"/Login"
+  }
 };

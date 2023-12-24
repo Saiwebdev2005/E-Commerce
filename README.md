@@ -29,3 +29,4 @@ Now, open your browser and visit `http://localhost:3000`. Voila! You're viewing 
 While this is primarily a personal project, I'm open to contributions. If you have suggestions or improvements, feel free to open an issue or submit a pull request.
 
 Happy Coding! 💻
+"# Anime-Planet" 

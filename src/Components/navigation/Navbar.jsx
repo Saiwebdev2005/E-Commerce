@@ -1,14 +1,15 @@
 "use client";
-import { AuthButtons } from "../auth/AuthButtons";
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { AiOutlineShoppingCart } from "react-icons/ai";
-import { signOut } from "next-auth/react";
 import { useSession } from "next-auth/react";
+import { CgProfile } from "react-icons/cg";
+
 const Navbar = () => {
- const {data:session} = useSession();
+  const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
+
 
   // This effect runs once after the component is mounted
   useEffect(() => {
@@ -82,9 +83,9 @@ const Navbar = () => {
             </ul>
           </div>
           <Link href="\">
-            <span className="btn btn-ghost text-xl md:text-4xl font-bold">
-              <span className="hidden md:block"> Anime-clothes</span>
-              <span className="block md:hidden">AnimeX</span>
+            <span className="btn btn-ghost text-xl md:text-4xl font-poppins">
+              <span className="hidden md:block"> YumeAttire</span>
+              <span className="block md:hidden">YA</span>
             </span>
           </Link>
         </div>
@@ -129,18 +130,17 @@ const Navbar = () => {
               <AiOutlineShoppingCart />
             </span>
           </Link>
-          {
-            session ? (<button className="button" onClick={() => signOut()}>
-              Sign Out
-            </button>
-            ): (
-<Link href="\User_Access">
-          <span className="button text-xl ">
-            Sign Up </span>
-          </Link>
-            )
-          }
-          
+          {session ? (
+            <div className="button text-2xl">
+              <Link href="\DashBoard">
+                <CgProfile />
+              </Link>
+            </div>
+          ) : (
+            <Link href="\User_Access">
+              <span className="button text-xl ">Sign Up </span>
+            </Link>
+          )}
         </div>
       </div>
     </div>

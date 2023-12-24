@@ -15,8 +15,8 @@ export default function SearchDisplay({
   }, []);
 
   return (
-    <div className="w-full bg-c2 h-fit">
-      <div className="max-w-6xl bg-c4 mx-auto p-12 h-full">
+    <div className="w-full bg-c1 h-fit">
+      <div className="max-w-6xl  mx-auto p-12 h-full">
         <div className="container relative mx-auto px-4 h-full">
           <form
             onSubmit={(e) => e.preventDefault()}
@@ -24,7 +24,7 @@ export default function SearchDisplay({
           >
             <input
               type="text"
-              className="w-full rounded-md p-2 text-c1 bg-c3 placeholder:text-c1"
+              className="w-full rounded-md p-2 text-c2 bg-c1 border-2 placeholder:text-c3"
               placeholder="Search for clothes..."
               value={searchTerm}
               onChange={handleChange}
@@ -32,7 +32,7 @@ export default function SearchDisplay({
             <select
               value={priceRange}
               onChange={handlePriceRangeChange}
-              className="ml-4 bg-c2 text-c1 font-sans"
+              className="ml-4 rounded-lg bg-c2 text-c1 "
             >
               <option value="all">All prices</option>
               <option value="300-500">600 - 1000</option>

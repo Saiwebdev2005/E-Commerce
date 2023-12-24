@@ -1,11 +1,13 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import '@fontsource/rubik';
+@import '@fontsource/poppins';
 
 @layer components
 {
   .button
   {
-    @apply px-4 py-2 rounded text-c2 inline-block shadow-lg bg-c4 hover:bg-c3 hover:text-c1 focus:bg-c3 duration-500 hover:border-2 hover:border-white
+    @apply px-4 py-2 rounded text-c1 inline-block shadow-lg bg-c3 hover:bg-c1  hover:text-c2 focus:bg-c3 duration-300 hover:-translate-y-0.5 border-2 border-c1 hover:border-c3
   }
 }

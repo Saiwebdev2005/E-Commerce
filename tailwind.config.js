@@ -13,11 +13,15 @@ module.exports = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors:{
-        c1:"#FFFFFF",
-        c2:"#6900FF",
-        c3:"#100303",
-        c4:"#43D8C9"
-      }
+        c1:"#060047",
+        c2:"#FFFFFF",
+        c3:"#E90064",
+        c4:"#FF5F9E"
+      },
+      fontFamily: {
+        'rubik': ['Rubik', 'sans-serif'],
+        'poppins': ['Poppins', 'sans-serif'],
+      },
     },
   },
   plugins: [require("daisyui")],

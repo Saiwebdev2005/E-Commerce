@@ -67,7 +67,7 @@ function Page({ gender }) { // Add gender as a prop
 
   // Render the component
   return (
-    <div className='w-full bg-c2 py-12'>
+    <div className='w-full bg-c1 py-12'>
       <div className='max-w-6xl mx-auto'>
         <div className='flex justify-center items-center'>
           <h1 className='text-4xl md:text-6xl font-bold text-c4  md:p-2'>{gender} New Arrivals</h1>

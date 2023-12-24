@@ -13,7 +13,7 @@ function Card({id, image, title, description, gender, onButtonClick,price}) {
       <div className="px-4 sm:px-6 py-2 sm:py-4">
         <div className="text-c2 text-lg md:text-2xl font-bold mb-2">{title}</div>
         <p className="text-xs md:text-sm text-c1">{description}</p>
-        <p className='text-c4 text-xl mt-3 font-medium'>
+        <p className='text-c2 text-xl mt-3 font-medium'>
           {/* price should be passes inside instead of 100 */}
           {formatCurrency(price)}
         </p>

@@ -11,7 +11,7 @@ const Page = () => {
     const fetchData = async () => {
       const result = await Data();
       setData(result)
-    };
+    }
 
     fetchData();
   }, []);
@@ -19,6 +19,7 @@ const Page = () => {
   return (
     <div>
       <ul>
+        <h1>Test Data</h1>
        {data.map(item => {
         return(
           <div key={item.id}>

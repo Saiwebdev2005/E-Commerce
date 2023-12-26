@@ -1,8 +1,8 @@
-import User from "@/app/(models)/User";
+import connect from "@/DB/db";
+import User from "@/models/User";
+import bcrypt from 'bcrypt';
 import CredentialsProvider from 'next-auth/providers/credentials'; // Make sure to import CredentialsProvider
 import GoogleProvider from 'next-auth/providers/google';
-import bcrypt from 'bcrypt';
-import connect from "@/DB/db";
 export const options = {
   providers: [
     GoogleProvider({

@@ -1,3 +1,4 @@
+import { notFound } from "next/navigation";
 // In your data fetching module
 async function getData() {
   const res = await fetch('http://localhost:3000/api/clothes',{cache:"no-store"})

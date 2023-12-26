@@ -1,22 +1,25 @@
-// Importing mongoose module
 import mongoose from "mongoose";
 
-// Function to establish a connection to MongoDB
+let isConnected;
+
 const connect = async() => {
+  if (isConnected) {
+    console.log('Using existing database connection');
+    return Promise.resolve();
+  }
+
   try{
-    // Attempt to connect to MongoDB using the connection string from environment variables
-    // The options passed are to use the new URL string parser and the unified topology
-    await mongoose.connect(process.env.MONGODB_URI,{
+    const db = await mongoose.connect(process.env.MONGODB_URI,{
       useNewUrlParser:true,
       useUnifiedTopology:true
-    })
-    // If the connection is successful, log a success message
-    console.log("Mongo connection successful")
+    });
+
+    isConnected = db.connections[0].readyState;
+    console.log("Mongo connection successful");
   }catch(error){
-    // If there's an error in connecting to the database, throw an error
-    throw new Error("Error in connect DB")
+    console.error(error);
+    throw new Error(`Error in connect DB: ${error.message}`);
   }
 }
 
-// Export the connect function as a module
 export default connect;

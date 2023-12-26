@@ -1,35 +1,25 @@
+// pages/index.js
 "use client"
-import { notFound } from 'next/navigation'
+import axios from 'axios';
 
-import React, { useState, useEffect } from 'react'
-import Data from '../../utils/fetchData';
-
-const Page = () => {
-  const [data, setData] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const result = await Data();
-      setData(result);
+export default function Home() {
+  const handleClick = async () => {
+    const userData = {
+      name: 'John Doe',
+      email: 'john@example.com',
     };
 
-    fetchData();
-  }, []);
+    try {
+      const res = await axios.post('http://localhost:3000/api/order', userData);
+      console.log(res.data);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
-    <div>
-      <ul>
-       {data.map(item => {
-        return(
-          <div key={item.id}>
-            <li>{item.id}</li>
-            <img src={item.image} alt={item.title} />
-          </div>
-        )
-       })}
-      </ul>
+    <div className='flex justify-center items-center bg-c2 h-screen'>
+      <button className='button' onClick={handleClick}>Create User</button>
     </div>
-  )
+  );
 }
-
-export default Page;

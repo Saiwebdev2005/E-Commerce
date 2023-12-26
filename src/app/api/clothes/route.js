@@ -3,7 +3,7 @@ import { NextResponse } from "next/server";
 // Importing the connect function from the DB module
 import connect from "@/DB/db";
 // Importing the Data model from the models directory
-import Data from "@/app/(models)/Data";
+import Data from "@/models/Data";
 
 // Exporting an async function to handle GET requests
 export const GET = async (req) => {

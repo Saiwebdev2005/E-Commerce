@@ -1,5 +1,4 @@
 "use client"
-import { notFound } from 'next/navigation'
 
 import React, { useState, useEffect } from 'react'
 import Data from '../../utils/fetchData';

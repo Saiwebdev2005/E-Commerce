@@ -10,7 +10,7 @@ const Page = () => {
   useEffect(() => {
     const fetchData = async () => {
       const result = await Data();
-      setData(result);
+      setData(result)
     };
 
     fetchData();

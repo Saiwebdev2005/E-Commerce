@@ -19,7 +19,7 @@ const Page = () => {
   return (
     <div>
       <ul>
-        <h1>Test Data For Testing</h1>
+        <h1>Test Data For </h1>
        {data.map(item => {
         return(
           <div key={item.id}>

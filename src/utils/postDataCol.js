@@ -1,4 +1,4 @@
-async function postData(userName, totalAmount,cart) {
+async function postDataCol(userName, totalAmount,cart) {
   const cartDetails = cart.map(item => ({
     id: item.id,
     title: item.title,
@@ -19,7 +19,7 @@ async function postData(userName, totalAmount,cart) {
   };
 
   try {
-    const response = await fetch('http://localhost:3000/api/customer', {
+    const response = await fetch('http://localhost:3000/api/collection', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -38,4 +38,4 @@ async function postData(userName, totalAmount,cart) {
     throw error;
   }
 }
-export default postData;
+export default postDataCol;

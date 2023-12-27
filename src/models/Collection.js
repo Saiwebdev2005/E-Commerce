@@ -12,6 +12,7 @@ const CartOrderSchema = new Schema(
   }
 );
 
-const CartOrderData = mongoose.models.customerorderdata || mongoose.model("customerorderdata", CartOrderSchema);
-
-export default CartOrderData;
+  function createCollectionForUser(userName) {
+  return mongoose.models[userName] || mongoose.model(userName, CartOrderSchema);
+}
+export default createCollectionForUser;

@@ -1,35 +1,42 @@
 "use client"
+import React, { useState, useEffect } from 'react';
+import { useSession } from 'next-auth/react';
+import fetchPurchaseData from '@/utils/fetchPurchaseData';
 
-import React, { useState, useEffect } from 'react'
-import Data from '../../utils/fetchData';
+function Page() {
+  const {data:session} = useSession();
+  const name = session?.user?.name;
+  const [userData, setUserData] = useState(null); // initialize userData as null
 
-const Page = () => {
-  const [data, setData] = useState([]);
-
+  // call the fetchUserData function when the component mounts and userName is defined
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await Data();
-      setData(result)
+    if (name) {
+      const fetchData = async () => {
+        const data = await fetchPurchaseData(name);
+        setUserData(data);
+      };
+  
+      fetchData();
     }
+  }, [name]);
 
-    fetchData();
-  }, []);
-
+  // check if userData is still null
+  if (!userData) {
+    return <div>Loading...</div>; // return a loading message
+  }
+  
   return (
     <div>
-      <ul>
-        <h1>Test</h1>
-       {data.map(item => {
-        return(
-          <div key={item.id}>
-            <li>{item.id}</li>
-            <img src={item.image} alt={item.title} />
-          </div>
-        )
-       })}
-      </ul>
+      <h1>Welcome, {name}!</h1>
+      {userData.map((item, index) => (
+        <div key={index}>
+          <h2>Total Spending: ${item.totalAmount}</h2>
+          <h2>Number of Items in Cart: {item.cartLength}</h2>
+        </div>
+      ))}
     </div>
   )
 }
 
 export default Page;
+

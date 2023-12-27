@@ -1,10 +1,14 @@
 "use client"
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react';
 import { signOut } from "next-auth/react";
-
+import { useSession } from 'next-auth/react';
+import fetchPurchaseData from '@/utils/fetchPurchaseData';
 
 function Page() {
   const [showModal, setShowModal] = useState(false);
+  const {data:session} = useSession();
+  const userName = session?.user?.name;
+  const [userData, setUserData] = useState([]); // state to store the user data
 
   const handleSignOut = async (e) => {
     e.preventDefault();
@@ -12,13 +16,27 @@ function Page() {
     signOut({ callbackUrl: `${window.location.origin}/` });
   }
 
+  // call the fetchUserData function when the component mounts and userName is defined
+  useEffect(() => {
+    if (userName) {
+      const fetchData = async () => {
+        const data = await fetchPurchaseData(userName);
+        console.log(`The data received in Page is ${data}`)
+        setUserData(data);
+      };
+  
+      fetchData();
+    }
+  }, [userName]);
+  
+
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-c1 text-c2">
       <div className="text-2xl mb-4">
-        Welcome, user name{/* {userName}! Display the user's name */}
+        Welcome, {userName}!
       </div>
       <div className="text-xl mb-4">
-        Total Spending: $100{/*${totalSpending}  Display the user's total spending */}
+        Total Spending: ${userData?.totalAmount}
       </div>
       <button 
         className="px-4 py-2 text-white bg-c3 rounded mb-4" 
@@ -49,4 +67,4 @@ function Page() {
   )
 }
 
-export default Page
+export default Page;

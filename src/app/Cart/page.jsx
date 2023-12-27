@@ -7,6 +7,7 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import postData from "@/utils/postData";
+import postDataCol from "@/utils/postDataCol";
 function Page() {
   const router = useRouter();
   const { cart, removeFromCart } = useContext(CartContext); // Destructure removeFromCart from context
@@ -28,6 +29,7 @@ function Page() {
     console.log("Data being sent:", userName, cart, totalAmount);
     try {
       await postData(userName, totalAmount, cart);
+      await postDataCol(userName, totalAmount, cart);
     } catch (error) {
       console.error("Error posting data:", error);
     }

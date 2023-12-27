@@ -33,14 +33,14 @@ function Page() {
     }
   }
   return (
-    <div className="bg-c3 flex flex-col justify-center items-center h-screen md:h-fit">
+    <div className="bg-c3 flex flex-col justify-center items-center h-fit md:h-fit">
       <h1 className="text-2xl md:text-4xl text-c1 font-bold my-4">
         Cart Items:
       </h1>
       <div className="flex flex-col md:flex-row items-start md:items-center justify-center md:max-w-6xl md:min-h-fit py-2 px-4 md:px-0">
         {cart.length > 0 ? (
           <>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full md:w-3/4 bg-c2">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 w-full md:w-3/4 bg-c1 rounded-lg p-4">
               {cart.map((item, index) => (
                 <div
                   key={index}
@@ -72,18 +72,18 @@ function Page() {
                 </div>
               ))}
             </div>
-            <div className="md:fixed top-0 md:top-1/2 right-2 transform md:-translate-y-1/2 w-full md:w-1/4 flex flex-col items-center justify-center md:justify-start md:ml-8">
+            <div className="md:fixed top-0 md:top-1/2 right-2 transform md:-translate-y-1/2 w-full md:w-1/4 flex flex-col items-center justify-center md:justify-start md:ml-8 m-6 md:m-0">
               <h2 className="text-3xl font-bold text-c1">
                 Total: {formatCurrency(totalAmount)}
               </h2>
               {/* Modal  */}
-              <button className="button" onClick={handleBuyNowClick}>
+              <button className="button my-4" onClick={handleBuyNowClick}>
                 <label htmlFor={session ? "buy_modal" : ""}>Buy Now</label>
               </button>
             </div>
           </>
         ) : (
-          <div className="flex flex-col justify-center items-center space-y-4  md:-mt-36">
+          <div className="flex flex-col justify-center items-center space-y-4 h-screen md:h-screen -mt-20  md:-mt-36">
             <h2 className="text-2xl md:text-4xl text-c1 font-bold my-4">
               Oops the cart is empty!!!
             </h2>
@@ -107,6 +107,7 @@ function Page() {
             <button onClick={handlePurchaseButtonClick} className="button w-full">Net Banking</button>
           </div>
         </div>
+        <label className="modal-backdrop bg-gray-800 opacity-50 w-full" htmlFor="buy_modal">Close</label>
       </div>
     </div>
   );

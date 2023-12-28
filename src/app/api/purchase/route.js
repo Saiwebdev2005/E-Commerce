@@ -1,26 +1,26 @@
 import connect from "@/DB/db";
-import createCollectionForUser from "@/models/Collection"; // import the function
+import getCollectionForUser from "@/models/Collection"; // import the function
 import { NextResponse } from "next/server";
 
 export async function GET(req, res) {
   try {
-    const userName = req.headers['x-user-name']; // get the username from the headers
-
-    // Convert userName to lowercase
-    const lowerCaseUserName = userName.toLowerCase();
+    const collectionName = req.headers['x-user-name']; // this should now be 'mu-sicks'
 
     await connect();
 
-    // Use the function to get the model for this user
-    const CartCollectionData = createCollectionForUser(lowerCaseUserName);
+    // Create a model for the user's collection
+    const Collection = getCollectionForUser(collectionName);
 
-    // Now CartCollectionData is a model for the collection named after the user
-    const data = await CartCollectionData.find({}); // find all documents in the collection
+    // Fetch all documents from the user's collection
+    const data = await Collection.find({});
+    if (!data.length) {
+      console.log('No documents found in collection');
 
+    }
     return NextResponse.json(data);
   } catch (error) {
     console.error(error);
-    console.log(`User name received is ${lowerCaseUserName}`)
-    return NextResponse.json({ message: 'Internal Server Error' }, { status: 500 });
+    console.log(`Collection name received is ${collectionName}`)
+    return NextResponse.json({ message: 'Internal Server Error', error: error.message }, { status: 500 });
   }
 }

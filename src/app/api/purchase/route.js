@@ -2,7 +2,7 @@ import connect from "@/DB/db";
 import getCollectionForUser from "@/models/Collection"; // import the function
 import { NextResponse } from "next/server";
 
-export async function GET(req, res) {
+export default async function GET(req, res) {
   try {
     const collectionName = req.headers['x-user-name']; // this should now be 'mu-sicks'
 
